@@ -4,5 +4,3 @@ before_script:
 script:
   - ./configure
   - make
-  - make install
-  - (cd ex && gcc basicapp.c -o basicapp.o && ./basicapp.o)
