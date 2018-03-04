@@ -1,3 +1,8 @@
 language: c
 before_script:
   - autoreconf -vif
+script:
+  - ./configure
+  - make
+  - make install
+  - (cd ex && gcc basicapp.c -o basicapp.o && ./basicapp.o)
