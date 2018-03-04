@@ -1,0 +1,8 @@
+AC_INIT(libebox, 1.0)
+AM_INIT_AUTOMAKE
+LT_INIT(shared)
+AC_PROG_CC
+AM_PROG_LIBTOOL
+AC_CONFIG_FILES(Makefile include/Makefile src/Makefile)
+AC_CONFIG_MACRO_DIRS([m4])
+AC_OUTPUT
