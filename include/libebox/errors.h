@@ -24,4 +24,6 @@
 //not found
 #define LIBEBOX_ERR_NOTFOUND -10
 
+const char *ebox_strerror(int err);
+
 #endif
