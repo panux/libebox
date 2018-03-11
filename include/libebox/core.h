@@ -1,5 +1,6 @@
 #include<stdlib.h>
 #include<stdbool.h>
+#include<strings.h>
 
 #ifndef LIBEBOX_CORE_H
 #define LIBEBOX_CORE_H
@@ -66,11 +67,19 @@ int ebox_poll_new(struct ebox_poller *poller, struct ebox_poll_state **conn, int
 //can return LIBEBOX_ERR_BADPTR or LIBEBOX_ERR_IO
 int ebox_poll_upd(struct ebox_poll_state *conn);
 //closes a connection
+//does nothing if conn is NULL
 int ebox_poll_close(struct ebox_poll_state *conn);
 //runs a polling cycle
 int ebox_poll_cycle(struct ebox_poller *poller);
 //configures a socket to accept connections
 //should call listen before using this
 int ebox_poll_serve(struct ebox_poller *poller, struct ebox_poll_state **sock, int sockfd, void (*handler)(struct ebox_poll_state*, int));
+
+
+
+//creates a pipe as 2 ebox_poll_states
+int ebox_poll_pipe(struct ebox_poller *poller, struct ebox_poll_state **w, struct ebox_poll_state **r);
+//convets an ebox_poll_state to a file descriptor (destructively)
+int ebox_poll_fd(struct ebox_poll_state **conn);
 
 #endif

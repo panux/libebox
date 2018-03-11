@@ -54,7 +54,7 @@ static int ebox_poll_new_internal(struct ebox_poller *poller, struct ebox_poll_s
         free(state);
         return LIBEBOX_ERR_IO;
     }
-    flags |= O_NONBLOCK;
+    flags |= O_NONBLOCK | O_CLOEXEC;
     if(fcntl(fd, F_SETFL, flags) == -1) {
         free(state);
         return LIBEBOX_ERR_IO;
@@ -186,7 +186,6 @@ ew:;
             }
         } else if(ev.events & EPOLLIN) {
             if(conn->isSocket) {
-                printf("Accept\n");
                 int fd = accept(conn->fd, NULL, NULL);
                 if(errno == -1) {
                     return LIBEBOX_ERR_IO;

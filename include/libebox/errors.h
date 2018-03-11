@@ -19,5 +19,9 @@
 #define LIBEBOX_ERR_BADARG -7
 //insufficient permissions
 #define LIBEBOX_ERR_PERM -8
+//buffer size exceeded
+#define LIBEBOX_ERR_OVERFLOW -9
+//not found
+#define LIBEBOX_ERR_NOTFOUND -10
 
 #endif
